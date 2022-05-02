@@ -10,13 +10,17 @@ game.configure(background = "#558")
 #matches[0]
 matches = {"Vinho Fino": "vitis vinifera", "Vinho de Mesa": "Vitis Labrusca", "Malbec": "Churrasco", "Sangiovese": "Pizza", "Sauvignon Blanc": "Frutos do Mar", "Vinho Verde": "Bacalhau" }
 match_list = []
+#randon_list = []
 for k, v in matches.items():
     match_list.append(k)
     match_list.append(v)
 
-print(match_list)
+print(matches)
+
 #shuffle our matches
+#randon_list = match_list
 random.shuffle(match_list)
+print(match_list)
 
 #create button frame
 my_frame = Frame(game)
@@ -35,7 +39,7 @@ def button_click(b, number):
     if b["text"] == '' and count < 2:
         b['text'] = match_list[number]
         #adicionar numero à answer list
-        answer_list.append(number)
+        answer_list.append(match_list[number])
         #adicionar botao e numero ao Answer dict
         answer_dict[b] = match_list[number]
         #incrementar contador
@@ -43,7 +47,10 @@ def button_click(b, number):
 
     #determinar certo ou errado
     if len(answer_list) == 2:
-        if answer_list[0] or answer_list[1] in matches(k, v):
+        print(answer_list[0])
+        print(answer_list[1])
+        if answer_list[0] and answer_list[1] in matches.items(k,v):
+            print ('AQUI')
             my_label.config(text= "Match!!")
 
             for key in answer_dict:
