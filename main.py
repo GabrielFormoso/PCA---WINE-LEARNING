@@ -24,6 +24,22 @@ corretas = 0
 answer_list = []
 answer_dict = {}
 
+
+def acerto():
+    global count, corretas, answer_list, answer_dict
+    for key in answer_dict:
+        key['state'] = 'disabled'
+    count = 0
+    answer_list = []
+    answer_dict = {}
+    corretas += 2
+
+
+def erro():
+    global count, answer_list
+    count = 0
+    answer_list = []
+
 #função para o click dos botoes
 def button_click(b, number):
     global count, corretas, answer_list, answer_dict
@@ -44,44 +60,29 @@ def button_click(b, number):
             if answer_list[1] in matches:
                 #2o - Tipo de Vinho
                 messagebox.showinfo('INCORRETO!', 'Você selecionou dois tipos de vinho!')
-                count = 0
-                answer_list = []
+                erro()
             else:
                 #2o Acompanhamento
                 if matches[answer_list[0]] == answer_list[1]:
                     messagebox.showinfo('PARABÉNS!', '{} com {} combinam muito bem!' .format(answer_list[0], answer_list[1]))
-                    for key in answer_dict:
-                        key['state'] = 'disabled'
-                    count = 0
-                    answer_list = []
-                    answer_dict = {}
-                    corretas += 2
-
+                    acerto()
                 else:
                     messagebox.showinfo('INCORRETO!', 'Essa não é a melhor combinação!')
-                    count = 0
-                    answer_list = []
+                    erro()
         else:
             #1o Acompanhamento
             if answer_list[1] in matches:
                 #2o - Tipo de Vinho
                 if matches[answer_list[1]] == answer_list[0]:
                     messagebox.showinfo('PARABÉNS!', '{} com {} combinam muito bem!' .format(answer_list[1], answer_list[0]))
-                    for key in answer_dict:
-                        key['state'] = 'disabled'
-                    count = 0
-                    answer_list = []
-                    answer_dict = {}
-                    corretas += 2
+                    acerto()
                 else:
                     messagebox.showinfo('INCORRETO!', 'Essa não é a melhor combinação!')
-                    count = 0
-                    answer_list = []
+                    erro()
             else:
                 #2o Acompanhamento
                 messagebox.showinfo('INCORRETO!', 'Você selecionou dois tipos de acompanhamento!')
-                count = 0
-                answer_list = []
+                erro()
 
         for key in answer_dict:
             key['text'] = ''
@@ -89,7 +90,6 @@ def button_click(b, number):
 
     if corretas == 12:
         messagebox.showinfo('PARABÉNS!', 'Você completou todas as combinações!')
-
 
 #define our buttons
 b0 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b0, 0))
