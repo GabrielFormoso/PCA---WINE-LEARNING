@@ -3,10 +3,18 @@ import random
 from tkinter import messagebox
 game = Tk()
 game.title('Wine Learning')
-game.geometry('500x350')
-game.configure(background = '#558')
+game.geometry('800x600')
+game.wm_iconbitmap('imagens/Food_and_cheese.ico')
+game.configure(background = '#581d22')
+#Não permite mudar o tamanho da janela
+game.resizable(False,False)
+
+#Label de boas vindas
+my_label = Label(game, text = 'Aprenda a Harmonizar vinhos de forma simples!', bg= '#ff6633',bd = 8.5, relief="solid", font=('comic sans ms', 24),)
+my_label.pack(pady = 30,)
+
 #criar pares
-matches = {'Vinho Fino': 'Vitis Vinífera', 'Vinho de Mesa': 'Vitis Labrusca', 'Malbec': 'Churrasco', 'Sangiovese': 'Pizza', 'Sauvignon Blanc': 'Frutos do Mar', 'Vinho Verde': 'Bacalhau'}
+matches = {'Vinho do Porto': 'Brownie', 'Pinot Noir': 'Fillet Mignon', 'Malbec': 'Churrasco', 'Sangiovese': 'Pizza', 'Sauvignon Blanc': 'Frutos do Mar', 'Vinho Verde': 'Bacalhau'}
 match_list = []
 for k, v in matches.items():
     match_list.append(k)
@@ -17,6 +25,7 @@ random.shuffle(match_list)
 #create button frame
 my_frame = Frame(game)
 my_frame.pack(pady=10)
+my_frame.configure(background = '#f00')
 
 #definição de variaveis
 count = 0
@@ -92,18 +101,18 @@ def button_click(b, number):
         messagebox.showinfo('PARABÉNS!', 'Você completou todas as combinações!')
 
 #define our buttons
-b0 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b0, 0))
-b1 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b1, 1))
-b2 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b2, 2))
-b3 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b3, 3))
-b4 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b4, 4))
-b5 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b5, 5))
-b6 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b6, 6))
-b7 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b7, 7))
-b8 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b8, 8))
-b9 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b9, 9))
-b10 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b10, 10))
-b11 = Button(my_frame, text ='', font=('Helvetica', 10), height = 6, width = 12, command = lambda: button_click(b11, 11))
+b0 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b0, 0))
+b1 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b1, 1))
+b2 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b2, 2))
+b3 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b3, 3))
+b4 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b4, 4))
+b5 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b5, 5))
+b6 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b6, 6))
+b7 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b7, 7))
+b8 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b8, 8))
+b9 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b9, 9))
+b10 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b10, 10))
+b11 = Button(my_frame, text ='',bg = '#ff6633', font=('comic sans ms', 12), height = 6, width = 12, command = lambda: button_click(b11, 11))
 
 #grid our buttons
 
@@ -122,7 +131,5 @@ b9.grid(row = 2, column = 1)
 b10.grid(row = 2, column = 2)
 b11.grid(row = 2, column = 3)
 
-my_label = Label(game, text = '')
-my_label.pack(pady = 20)
 
 game.mainloop()
